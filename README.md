@@ -4,7 +4,7 @@ Chat App to allow communication between multiple nodes on the same network. Used
 Used multithreading to support group chat feature.
 
 **Steps to Run:**
-- Open IDLE and run the server.py file .
+- Open IDLE(Integrated Development Learning Environment for Python) and run the server.py file .
 - Open a new instance of IDLE and run client.py .
 - Repeat previous step for all new client nodes .               
 Thats it ^_^
