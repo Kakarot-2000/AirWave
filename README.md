@@ -9,3 +9,5 @@ Used multithreading to support group chat feature.
 - Repeat previous step for all new client nodes .               
 Thats it ^_^
 
+# Demo
+![GitHub Logo](screenshot.png)
