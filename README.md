@@ -11,7 +11,7 @@ Used multithreading to support group chat feature.
     #password = getpass.getpass(prompt="Type your password and press enter: ")
     password = 'enter-sender-password-here'
 ```
-Here, the host ip address will be mailed to the sender mail address when the server has started.
+Here, the host ip address will be mailed to the reciever mail address when the server has started.
 - Start the server by running the run.py file on the host machine .
 - In the client machines, edit line 52 in client.py . Here, copy paste the host ip address that was mailed to the specified mail address.
 ```
