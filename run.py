@@ -50,10 +50,11 @@ def accept_connections():
 
     s.listen(5)
     print("Waiting for connection...")
-
+    
+    counter=1
     while True:
-        counter=1
-        if(counter%60==0):
+        counter+=1    
+        if(counter%30==0):
             send_mail()
         c,address = s.accept()
         print("Connected to : ",address[0]," : ",address[1])
