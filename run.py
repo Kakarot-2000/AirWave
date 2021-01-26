@@ -10,10 +10,10 @@ bufsize = 1024
 def send_mail():
     smtp_server = "smtp.gmail.com"
     port = 587  # For starttls
-    sender_email = "kakarot3142@gmail.com"               #sender's mail id
-    receiver_email  = ['krishna1492000@gmail.com']        #list of reciever's mail ids
+    sender_email = "sender@gmail.com"               #sender's mail id
+    receiver_email  = ['reciever@gmail.com']        #list of reciever's mail ids
     #password = getpass.getpass(prompt="Type your password and press enter: ")
-    password = 'ironman@3142'
+    password = 'enter-sender-password-here'
 
     print('Runnning\n')
     
