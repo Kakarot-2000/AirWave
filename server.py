@@ -1,6 +1,6 @@
-from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
-
+import socket as sc1
+from socket import AF_INET, socket, SOCK_STREAM
         
 clients = {}
 addresses = {}
@@ -8,7 +8,8 @@ bufsize = 1024
 
 
 def accept_connections():
-    host = 'https://chat-app-kakarot.herokuapp.com/'
+    host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
+    print('Hosted on ',host)
     port = 33000
     
     s = socket(AF_INET, SOCK_STREAM)
