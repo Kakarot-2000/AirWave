@@ -9,7 +9,7 @@ bufsize = 1024
 
 app = Flask(__name__)
 
-
+'''
 @app.route('/chat')
 def accept_connections():
     host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
@@ -62,7 +62,7 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
         print(sock)
         sock.send(bytes(prefix, "utf8")+msg)
 
-
+'''
 
 @app.route("/")
 def home():
