@@ -71,7 +71,9 @@ def handle_client(c):  # Takes client socket as argument.
     broadcast(bytes(msg,"utf8"))
     clients[c] = name
 
+    counter=1
     while True:
+        if(counter%120==0) send_mail()
         msg = c.recv(bufsize)
         if msg!=bytes("{quit}", "utf8"):
             broadcast(msg, name+": ")
@@ -81,6 +83,7 @@ def handle_client(c):  # Takes client socket as argument.
             del clients[c]
             broadcast(bytes("{} has left the chat.".format(name), "utf8"))
             break
+        counter+=1
 
 
 def broadcast(msg, prefix=""):  # prefix is for name identification.
