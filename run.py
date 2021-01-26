@@ -39,7 +39,7 @@ def send_mail():
         server.quit() 
 
 def accept_connections():
-    #send_mail()
+    send_mail()
     host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
     print('Hosted on ',host)
     port = 33000
@@ -51,11 +51,8 @@ def accept_connections():
     s.listen(5)
     print("Waiting for connection...")
     
-    counter=1
+    
     while True:
-        counter+=1    
-        if(counter%30==0):
-            send_mail()
         c,address = s.accept()
         print("Connected to : ",address[0]," : ",address[1])
         c.send(bytes("Welcome! Now type your name and press enter!", "utf8"))
