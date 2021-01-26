@@ -73,7 +73,8 @@ def handle_client(c):  # Takes client socket as argument.
 
     counter=1
     while True:
-        if(counter%120==0) send_mail()
+        if(counter%120==0):
+            send_mail()
         msg = c.recv(bufsize)
         if msg!=bytes("{quit}", "utf8"):
             broadcast(msg, name+": ")
