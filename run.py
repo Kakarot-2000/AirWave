@@ -1,17 +1,45 @@
-from flask import Flask
 from threading import Thread
 import socket as sc1
 from socket import AF_INET, socket, SOCK_STREAM
-
+import smtplib, ssl
+        
 clients = {}
 addresses = {}
 bufsize = 1024
 
-app = Flask(__name__)
+def send_mail():
+    smtp_server = "smtp.gmail.com"
+    port = 587  # For starttls
+    sender_email = "kakarot3142@gmail.com"               #sender's mail id
+    receiver_email  = ['krishna1492000@gmail.com']        #list of reciever's mail ids
+    #password = getpass.getpass(prompt="Type your password and press enter: ")
+    password = 'ironman@3142'
 
+    print('Runnning\n')
+    
+    text = 'Server Hosted on '+sc1.gethostbyname(sc1.gethostname())
+    message = 'Subject: {}\n\n{}'.format('Host Address', text)
+    # Create a secure SSL context
+    context = ssl.create_default_context()
 
-@app.route('/chat')
+    # Try to log in to server and send email
+    try:
+        server = smtplib.SMTP(smtp_server,port)
+        server.ehlo() # Can be omitted
+        server.starttls(context=context) # Secure the connection
+        server.ehlo() # Can be omitted
+        server.login(sender_email, password)
+        # TODO: Send email here
+        server.sendmail(sender_email, receiver_email, message)
+        
+    except Exception as e:
+        # Print any error messages to stdout
+        print(e)
+    finally:
+        server.quit() 
+
 def accept_connections():
+    send_mail()
     host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
     print('Hosted on ',host)
     port = 33000
@@ -63,9 +91,5 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
         sock.send(bytes(prefix, "utf8")+msg)
 
 
-@app.route("/")
-def home():
-    return "Hosted on"+sc1.gethostbyname(sc1.gethostname())
-    
 if __name__ == "__main__":
-    app.run(debug=True)
+    accept_connections()

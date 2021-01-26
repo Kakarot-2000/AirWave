@@ -49,7 +49,7 @@ send_button.pack()
 
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
-host = '192.168.43.211' 
+host = '192.168.43.211'
 port = 33000
 bufsize = 1024
 
