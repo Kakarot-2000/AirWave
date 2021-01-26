@@ -49,7 +49,7 @@ send_button.pack()
 
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
-host = '127.0.0.1'
+host = 'https://chat-app-kakarot.herokuapp.com/'
 port = 33000
 bufsize = 1024
 

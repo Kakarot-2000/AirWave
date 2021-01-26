@@ -8,7 +8,7 @@ bufsize = 1024
 
 
 def accept_connections():
-    host = '127.0.0.1'
+    host = 'https://chat-app-kakarot.herokuapp.com/'
     port = 33000
     
     s = socket(AF_INET, SOCK_STREAM)
