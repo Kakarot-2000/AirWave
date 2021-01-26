@@ -39,7 +39,7 @@ def send_mail():
         server.quit() 
 
 def accept_connections():
-    send_mail()
+    #send_mail()
     host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
     print('Hosted on ',host)
     port = 33000
@@ -52,6 +52,9 @@ def accept_connections():
     print("Waiting for connection...")
 
     while True:
+        counter=1
+        if(counter%60==0):
+            send_mail()
         c,address = s.accept()
         print("Connected to : ",address[0]," : ",address[1])
         c.send(bytes("Welcome! Now type your name and press enter!", "utf8"))
@@ -71,10 +74,7 @@ def handle_client(c):  # Takes client socket as argument.
     broadcast(bytes(msg,"utf8"))
     clients[c] = name
 
-    counter=1
     while True:
-        if(counter%120==0):
-            send_mail()
         msg = c.recv(bufsize)
         if msg!=bytes("{quit}", "utf8"):
             broadcast(msg, name+": ")
