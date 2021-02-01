@@ -1,7 +1,7 @@
 # Chat_App
 
 Chat App to allow communication between multiple users on same or different networks. Used socket programming concepts to establish connection between nodes. 
-Used multithreading to support group chat feature.
+Used multithreading to implement group chat feature.
 
 **Steps to Run:**
 - Edit lines 13,14 and 16 in run.py . 
