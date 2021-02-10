@@ -1,13 +1,19 @@
 from threading import Thread
 import socket as sc1
 from socket import AF_INET, socket, SOCK_STREAM
-        
+import tkinter as tk
+import sys
+
+
 clients = {}
 addresses = {}
 bufsize = 1024
 
 
 def accept_connections():
+    btnStart.config(state=tk.DISABLED)
+    btnStop.config(state=tk.NORMAL)
+    
     host = sc1.gethostbyname(sc1.gethostname())         #'127.0.0.1'
     print('Hosted on ',host)
     port = 33000
@@ -59,5 +65,31 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
         sock.send(bytes(prefix, "utf8")+msg)
 
 
-if __name__ == "__main__":
-    accept_connections()
+def stop_server():
+    btnStart.config(state=tk.NORMAL)
+    btnStop.config(state=tk.DISABLED)
+    sys.exit()
+
+top = tk.Tk()
+top.title("Server")
+top.config(bg='#3D3C3A')
+top.geometry('256x64')
+
+
+# Top frame consisting of two buttons widgets (i.e. btnStart, btnStop)
+frame = tk.Frame(top)
+btnStart = tk.Button(frame, text="Connect", command=lambda : accept_connections())
+btnStart.pack(side=tk.LEFT)
+btnStop = tk.Button(frame, text="Stop", command=lambda : stop_server())
+btnStop.pack(side=tk.LEFT)
+frame.pack(side=tk.TOP, pady=(10, 0))
+frame2 = tk.Frame(top)
+lblHost = tk.Label(frame2, text = "Host: {}".format(sc1.gethostbyname(sc1.gethostname())))
+lblHost.pack(side=tk.LEFT)
+lblPort = tk.Label(frame2, text = "Port: 1234 ")
+lblPort.pack(side=tk.LEFT)
+frame2.pack(side=tk.TOP, pady=(5, 0))
+
+
+
+top.mainloop()
