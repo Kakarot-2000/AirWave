@@ -1,6 +1,6 @@
-# Chat_App
+# AirWave
 
-Chat App to allow communication between multiple users on same or different networks. Used socket programming concepts to establish connection between nodes. 
+Airwave is a chat app that allows communication between multiple users on same or different networks. Used socket programming concepts to establish connection between nodes. 
 Used multithreading to implement group chat feature.
 
 **Steps to Run:**
